@@ -22,6 +22,8 @@ async function readFromFile() {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.options('*', cors())
+app.use(cors())
 
 app.post('/feedbacks', async function(req, res) {
     await writeToFile(req.body);
@@ -31,7 +33,7 @@ app.post('/feedbacks', async function(req, res) {
         });
 });
 
-app.get('/feedbacks', cors(), async function(req, res) {
+app.get('/feedbacks', async function(req, res) {
     res.json({
         success: true,
         body: await readFromFile()

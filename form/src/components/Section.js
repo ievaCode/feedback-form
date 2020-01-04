@@ -21,7 +21,7 @@ const Section = ({header, children}) => {
 const classes = useStyles()
 
 return(
-    <section className = 'section'>
+    <section>
         <Container className={classes.section} maxWidth="sm">            
             <Typography   variant = "h2">{header}</Typography>
             <Box
