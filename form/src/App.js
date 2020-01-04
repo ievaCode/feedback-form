@@ -113,9 +113,9 @@ function App() {
             if (data.filter (item => item.email === entry.email.toLowerCase()).length === 0) {
             const entryInLowerCase = {
                 date:entry.date,
-                name:entry.name.toLowerCase(),
-                email:entry.email.toLowerCase(),
-                feedback: entry.feedback.toLowerCase()
+                name:entry.name.toLowerCase().trim().replace(/\s\s+/g, ' '),
+                email:entry.email.toLowerCase().trim().replace(/\s\s+/g, ' '),
+                feedback: entry.feedback.toLowerCase().trim()
             }     
             setData(data.concat(entryInLowerCase));
             {(!nameSearch && !dateSearch) && setReviews(reviews.concat(entry))};
@@ -218,7 +218,7 @@ const filterData = () =>{
                         name = "by-name"
                         size = 'small'
                         InputLabelProps={{shrink: true}}
-                        onChange={event => setNameSearch(event.target.value.toLowerCase())} 
+                        onChange={event => setNameSearch(event.target.value.toLowerCase().trim().replace(/\s\s+/g, ' '))} 
                         />
                     <TextField
                         variant = "outlined"
